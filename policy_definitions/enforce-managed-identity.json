@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "displayName": "Enforce Managed Identity on Compute",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Ensure all compute resources use managed identity",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "in": ["Microsoft.Compute/virtualMachines", "Microsoft.Web/sites"]
+          },
+          {
+            "field": "identity.type",
+            "notEquals": "SystemAssigned"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

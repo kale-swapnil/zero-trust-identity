@@ -1,0 +1,40 @@
+{
+  "properties": {
+    "displayName": "Deny Owner Role Assignment",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Prevents assignment of the 'Owner' role except for explicitly allowed principals.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Authorization"
+    },
+    "parameters": {
+      "allowedPrincipals": {
+        "type": "Array",
+        "metadata": {
+          "description": "List of allowed principal IDs (objectId of users, groups, or service principals) that can be assigned the Owner role.",
+          "displayName": "Allowed Principals"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
+            "equals": "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Authorization/roleAssignments/principalId",
+              "in": "[parameters('allowedPrincipals')]"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
