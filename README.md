@@ -6,8 +6,8 @@ This repository implements a practical Zero Trust model on Azure using modular T
 
 ## 📦 Modules Overview
 
-`Identity` -  Creates an Azure AD application and service principal with GitHub OIDC 
-`Keyvault` - Deploys a secure Key Vault and assigns RBAC access                
+`Identity` -  Creates an Azure AD application and service principal with GitHub OIDC
+`Keyvault` - Deploys a secure Key Vault and assigns RBAC access
 `Policies` -  Defines and assigns custom Azure Policies for Zero Trust enforcement 
 
 ---
