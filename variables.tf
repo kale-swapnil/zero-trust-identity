@@ -39,5 +39,5 @@ variable "github_oidc_issuer" {
 variable "subscription_id" {
   type        = string
   description = "Azure subscription ID where resources will be created"
-  default     = "366d84a8-7475-45d4-97d3-f44d0f00d92a"
+  default     = ""
 }
